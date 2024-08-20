@@ -1,0 +1,13 @@
+// servers/home/corejs/workers/_hack.js
+async function main(ns) {
+  let id = ns.args[0];
+  let hostname = ns.args[1];
+  let start = ns.args[2];
+  let target = ns.args[3];
+  await ns.sleep(start - Date.now());
+  let res = await ns.hack(target);
+  let executionTime = Date.now() - start;
+}
+export {
+  main
+};
