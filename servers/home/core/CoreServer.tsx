@@ -12,7 +12,6 @@ export class CoreServer {
     readonly baseDifficulty: number;
     readonly hostname: string;
     readonly ip: string;
-    readonly maxRam: number;
     readonly minDifficulty: number;
     readonly moneyMax: number;
     readonly numOpenPortsRequired: number;
@@ -34,7 +33,6 @@ export class CoreServer {
         this.baseDifficulty = this.server.baseDifficulty;
         this.hostname = this.server.hostname;
         this.ip = this.server.ip;
-        this.maxRam = this.hostname == "home" ? this.server.maxRam - 256 : this.server.maxRam;
         this.minDifficulty = this.server.minDifficulty;
         this.moneyMax = this.server.moneyMax;
         this.numOpenPortsRequired = this.server.numOpenPortsRequired
@@ -105,6 +103,7 @@ export class CoreServer {
     get sshPortOpen(): boolean { return this.server.sshPortOpen; }
     get ftpPortOpen(): boolean { return this.server.ftpPortOpen; }
     get httpPortOpen(): boolean { return this.server.httpPortOpen; }
+    get maxRam(): number { return this.hostname == "home" ? this.server.maxRam - 256 : this.server.maxRam; }
 
     get ramAvailable() { return this.maxRam - this.ramUsed; }
 
